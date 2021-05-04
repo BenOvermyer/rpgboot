@@ -68,3 +68,8 @@ template = env.get_template('game.tex.jinja')
 output = template.render(title=title, slug=slug, chapters=chapterslugs)
 with open(PROJECT_DIR + '/' + slug + '.tex', 'w') as file:
   file.write(output)
+
+template = env.get_template('build.sh.jinja')
+output = template.render(slug=slug)
+with open(PROJECT_DIR + '/build.sh', 'w') as file:
+  file.write(output)
