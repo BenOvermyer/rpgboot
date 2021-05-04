@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{gamebook}[2021/04/30 Game Book LaTeX class]
+
+\LoadClass[]{book}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptions\relax
+
+\renewcommand{\normalsize}{\fontsize{9}{10}\selectfont}
+\setlength{\textwidth}{17.5cm}
+\setlength{\textheight}{22cm}
+\setcounter{secnumdepth}{0}

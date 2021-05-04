@@ -1,0 +1,104 @@
+% This style is based on pandoc's default, but with lots of options removed.
+\documentclass[letterpaper,table]{gamebook}
+\usepackage{multicol}
+
+% Set the typeface to use
+\usepackage{fontspec}
+\setmainfont{Crimson}
+
+% No idea what these do yet
+\usepackage{amssymb,amsmath}
+\usepackage{fixltx2e} % provides \textsubscript
+
+% Text Encoding
+\usepackage[utf8]{inputenc}
+
+% Enable upquote and microtype
+\usepackage{upquote,microtype}
+\UseMicrotypeSet[protrusion]{basicmath}
+
+% Set page geometry
+\usepackage[letterpaper, total={7in, 9.5in}, margin=1.5in]{geometry}
+
+% This makes sure links are presented as just normal text
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Use xtab for tables
+\usepackage{xtab}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\definecolor{light-gray}{gray}{0.95}
+
+% Use indexes!
+\usepackage{imakeidx}
+\makeindex
+
+% Use csquotes for block quotes
+\usepackage{csquotes}
+
+% Image stuff
+\usepackage{graphicx,grffile}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} } % sets the location for images
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage{parskip}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Not sure what this does
+\TeXXeTstate=1
+\newcommand{\RL}[1]{\beginR #1\endR}
+\newcommand{\LR}[1]{\beginL #1\endL}
+\newenvironment{RTL}{\beginR}{\endR}
+\newenvironment{LTR}{\beginL}{\endL}
+
+% Begin the document
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+
+\begin{center}
+  \includegraphics[center]{logo-\VAR{slug}}
+
+  \VAR{title}
+
+  Written and Designed by Ben Overmyer
+
+  PDF Built:
+  \today
+\end{center}
+
+\include{manuscript/credits}
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+
+\mainmatter
+\include{manuscript/introduction}
+\include{manuscript/gameplay}
+\include{manuscript/character-creation}
+\include{manuscript/combat}
+\include{manuscript/conclusion}
+\appendix
+\include{manuscript/appendix1}
+
+\printindex
+
+\listoftables
+
+\end{document}
