@@ -64,6 +64,11 @@ for chapter in chapters:
   with open(PROJECT_DIR + '/manuscript/' + chapterslug + '.tex', 'w') as file:
     file.write(output)
 
+template = env.get_template('credits.tex.jinja')
+output = template.render(title=title)
+with open(PROJECT_DIR + '/manuscript/credits.tex', 'w') as file:
+  file.write(output)
+
 template = env.get_template('game.tex.jinja')
 output = template.render(title=title, slug=slug, chapters=chapterslugs)
 with open(PROJECT_DIR + '/' + slug + '.tex', 'w') as file:
