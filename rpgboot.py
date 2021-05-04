@@ -44,7 +44,27 @@ for filename in filenames:
   with open(PROJECT_DIR + '/' + filename, 'w') as file:
     file.write(output)
 
+chapters = [
+  'Introduction',
+  'Character Creation',
+  'Combat',
+  'Gameplay',
+]
+
+template = env.get_template('chapter.tex.jinja')
+
+chapterslugs = []
+
+for chapter in chapters:
+  chaptertitle = chapter
+  chapterslug = chaptertitle.lower().replace(' ', '-')
+  chapterslugs.append(chapterslug)
+
+  output = template.render(chaptertitle=chaptertitle)
+  with open(PROJECT_DIR + '/manuscript/' + chapterslug + '.tex', 'w') as file:
+    file.write(output)
+
 template = env.get_template('game.tex.jinja')
-output = template.render(title=title, slug=slug)
+output = template.render(title=title, slug=slug, chapters=chapterslugs)
 with open(PROJECT_DIR + '/' + slug + '.tex', 'w') as file:
   file.write(output)

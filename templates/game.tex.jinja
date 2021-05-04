@@ -89,11 +89,9 @@
 \newpage
 
 \mainmatter
-\include{manuscript/introduction}
-\include{manuscript/gameplay}
-\include{manuscript/character-creation}
-\include{manuscript/combat}
-\include{manuscript/conclusion}
+\BLOCK{ for chapter in chapters }
+\include{manuscript/\VAR{chapter}}
+\BLOCK{ endfor }
 \appendix
 \include{manuscript/appendix1}
 
